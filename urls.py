@@ -21,21 +21,16 @@ from django.urls import include
 from base.views import inicio
 from base.views import contato
 
-app_name = 'rest_api'
 
 from base.views import *
 
 
 urlpatterns = [
-    path('', inicio, name='inicio'),
     path('contato/', contato, name='contato'),
-    path('reserva/', include('reserva.urls', namespace='reserva')),
+    path('', inicio, name='inicio'),
     path('admin/', admin.site.urls),
-    
-
-    path('login/', login_usuario, name="login_usuario"),
-    path('logout/', logout_usuario, name="logout_usuario"),
-    path('cadastro-usuario/', cadastro_usuario,name='cadastro_usuario'),
-    path('api_auth/', include("rest_framework.urls")),
-    path('api/', include('rest_api.urls',namespace='api')),
+    path('reserva/', include('reserva.urls', namespace='reserva')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include('rest_api.urls', namespace='api')),
 ]
+   
